@@ -1,0 +1,19 @@
+.heroContainer {
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 0;
+  }
+  
+  .blueBar {
+    background-color: #0e5483;
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  .blueBar button {
+    margin: 0 0.5rem; /* Space out the buttons */
+  }

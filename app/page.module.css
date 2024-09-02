@@ -1,0 +1,111 @@
+/* Main container with light and dark mode support */
+.light {
+  background-color: #f0f0f0; /* 60% main background */
+  color: #333; /* Primary text color */
+}
+
+.dark {
+  background-color: #1c1c1c; /* Dark mode background */
+  color: #ccc; /* Light text color for dark mode */
+}
+
+/* Optional background GIF or image (commented out) */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  opacity: 0.8;
+  /* Uncomment the line below and replace with your image or GIF */
+  /* background-image: url('/path-to-your-image-or-gif.gif'); */
+}
+
+/* Header section styling */
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #3a86ff; /* 10% accent color */
+}
+
+.header p {
+  font-size: 1.5rem;
+  color: #555; /* 30% secondary text color */
+}
+
+/* Button for toggling dark mode */
+.toggleButton {
+  background-color: #00ffb3; /* Primary button color */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Waitlist section styling */
+.waitlist {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.waitlist h2 {
+  font-size: 2rem;
+  color: #3a86ff; /* 10% accent color */
+  margin-bottom: 20px;
+}
+
+/* Input fields for waitlist form */
+.inputField {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Submit button styling */
+.submitButton {
+  background-color: #00ffb3; /* Primary button color */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Error text styling */
+.errorText {
+  color: red;
+  font-size: 0.9rem;
+}
+
+/* Message section styling */
+.messageSection {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.messageSection h2 {
+  font-size: 2rem;
+  color: #3a86ff; /* 10% accent color */
+  margin-bottom: 20px;
+}
+
+/* Textarea for message form */
+.messageField {
+  width: 80%;
+  height: 100px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #eb1818;
+  border-radius: 5px;
+}

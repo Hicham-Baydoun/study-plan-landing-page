@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light mode colors */
+  --background-color: #F5F5F5;
+  --primary-color: #3B82F6;      /* Changed to a blue shade */
+  --secondary-color: #5da3ff;    /* Light blue for backgrounds */
+  --text-color: #1E40AF;         /* Dark blue for text */
+
+  /* Dark mode colors */
+  --dark-background: #1E3A8A;    /* Dark blue background for dark mode */
+  --dark-primary: #60A5FA;       /* Lighter blue for dark mode primary */
+  --dark-secondary: #2563EB;     /* Mid-tone blue for dark mode secondary */
+  --dark-accent: #93C5FD;        /* Light blue accent for dark mode */
+  --dark-text: #F3F4F6;          /* Light gray text for dark mode */
+
+  /* Additional variables */
+  --nav-bg-color: var(--background-color);
+  --nav-text-color: var(--text-color);
+  --button-bg-color: var(--primary-color);
+  --button-text-color: white;
+  --box-bg-color: var(--secondary-color);
+  --box-text-color: var(--text-color);
+}
+
+.dark-mode {
+  --background-color: var(--dark-background);
+  --primary-color: var(--dark-primary);
+  --secondary-color: var(--dark-secondary);
+  --text-color: var(--dark-text);
+  --nav-bg-color: var(--dark-primary);
+  --nav-text-color: var(--dark-text);
+  --button-bg-color: var(--dark-accent);
+  --button-text-color: var(--dark-background);
+  --box-bg-color: var(--dark-secondary);
+  --box-text-color: var(--dark-text);
+}
+
+body {
+  @apply bg-background text-text;
+}
+
+/* Navigation styles */
+.nav-bar {
+  background-color: var(--nav-bg-color);
+  color: var(--nav-text-color);
+}
+
+/* Button styles */
+.custom-button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+}
+
+/* Box styles */
+.custom-box {
+  background-color: var(--box-bg-color);
+  color: var(--box-text-color);
+}
+
+/* Add any additional custom styles here */
