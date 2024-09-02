@@ -1,17 +1,11 @@
-import { NextResponse } from 'next/server'
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, query, where, getDocs } from "firebase/firestore";
+// app/api/waitlist/route.js
+import { NextResponse } from 'next/server';
+import { firestore } from '../../../firebase'; // Adjust the import path
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import dns from 'dns';
 import { promisify } from 'util';
 
 const resolveMx = promisify(dns.resolveMx);
-
-const firebaseConfig = {
-  // Your Firebase config here
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 async function isEmailValid(email) {
   // Basic format check
@@ -32,33 +26,33 @@ async function isEmailValid(email) {
 }
 
 export async function POST(request) {
-  const { name, email } = await request.json()
+  const { name, email } = await request.json();
 
   try {
     // Check if email is valid
     const emailValid = await isEmailValid(email);
     if (!emailValid) {
-      return NextResponse.json({ message: "Invalid email address" }, { status: 400 })
+      return NextResponse.json({ message: "Invalid email address" }, { status: 400 });
     }
 
     // Check if email already exists in the database
-    const q = query(collection(db, "waitlist"), where("email", "==", email));
+    const q = query(collection(firestore, "waitlist"), where("email", "==", email));
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      return NextResponse.json({ message: "Email already exists in waitlist" }, { status: 400 })
+      return NextResponse.json({ message: "Email already exists in waitlist" }, { status: 400 });
     }
 
     // Add to waitlist
-    await addDoc(collection(db, "waitlist"), {
+    await addDoc(collection(firestore, "waitlist"), {
       name,
       email,
       timestamp: new Date()
     });
 
-    return NextResponse.json({ message: "Successfully added to waitlist" })
+    return NextResponse.json({ message: "Successfully added to waitlist" });
   } catch (error) {
     console.error("Error adding to waitlist:", error);
-    return NextResponse.json({ message: "Server error" }, { status: 500 })
+    return NextResponse.json({ message: "Server error" }, { status: 500 });
   }
 }
