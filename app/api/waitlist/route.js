@@ -1,11 +1,14 @@
 // app/api/waitlist/route.js
 import { NextResponse } from 'next/server';
-import { firestore } from '../../../firebase'; // Adjust the import path
+import { firestore } from '../../../firebase'; // Ensure the correct path
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import dns from 'dns';
 import { promisify } from 'util';
 
 const resolveMx = promisify(dns.resolveMx);
+
+// (Rest of the code remains unchanged)
+
 
 async function isEmailValid(email) {
   // Basic format check
