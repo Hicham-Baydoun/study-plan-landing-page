@@ -7,9 +7,14 @@ export default function ContactPopup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setError('') // Reset error state before submitting
+
+    console.log('Submitting form...')
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -27,21 +32,26 @@ export default function ContactPopup() {
         setMessage('')
       } else {
         const data = await response.json()
-        alert(data.message || 'Error sending message')
+        setError(data.message || 'Error sending message')
+        console.log('Error response:', data)
       }
     } catch (error) {
       console.error('Error:', error)
-      alert('An error occurred. Please try again.')
+      setError('An error occurred. Please try again.')
     }
   }
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Contact Us</button>
+      <button onClick={() => {
+        console.log('Opening popup...')
+        setIsOpen(true)
+      }}>Contact Us</button>
       {isOpen && (
         <div className="popup">
           <div className="popup-content">
             <h2>Contact Us</h2>
+            {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -65,7 +75,10 @@ export default function ContactPopup() {
               ></textarea>
               <button type="submit">Send Message</button>
             </form>
-            <button onClick={() => setIsOpen(false)}>Close</button>
+            <button onClick={() => {
+              console.log('Closing popup...')
+              setIsOpen(false)
+            }}>Close</button>
           </div>
         </div>
       )}
